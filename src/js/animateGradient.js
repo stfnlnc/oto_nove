@@ -1,6 +1,5 @@
 export default function animateGradient(gradients) {
     gradients.forEach((gradient, key) => {
-
         let delay;
         let randomFactor
         delay = Math.random() * (1500 - 200) + 200
@@ -40,5 +39,5 @@ export default function animateGradient(gradients) {
                 }
             }, 1500)
         })
-    })
+    });
 }
