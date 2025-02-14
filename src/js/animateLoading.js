@@ -28,7 +28,7 @@ export default function animateLoading(item) {
                     onComplete: () => {
                         if (key === split.chars.length - 1) {
                             gsap.to(chars, {
-                                text: 'to Nove Fest',
+                                text: 't0 N0ve Fest',
                                 opacity: 1,
                                 duration: 1.2,
                                 ease: 'power4.inOut',
