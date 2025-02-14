@@ -33,71 +33,87 @@ export default function ColorGrid() {
 
     return (
         <>
-            <div id="friday-content" className="fixed top-0 left-0 w-full h-[100lvh] z-10 grid grid-cols-17">
-                <div className="col-span-2"></div>
-                <div className="col-span-12 bg-amber-500 p-5 h-[100lvh] overflow-y-scroll">
-                    <div className="w-full h-[200lvh]">
-                        <h1 className="text-9xl">Hello</h1>
-                    </div>
-                </div>
-                <div className="col-span-3"></div>
-            </div>
-            <div id="saturday-content" className="fixed top-0 left-0 w-full h-[100lvh] z-10 grid grid-cols-17">
-                <div className="col-span-3"></div>
-                <div className="col-span-12 bg-green-500 p-5 h-[100lvh] overflow-y-scroll">
-                    <div className="w-full h-[200lvh]">
-                        <h1 className="text-9xl">Hello</h1>
-                    </div>
-                </div>
-                <div className="col-span-2"></div>
-            </div>
-            <section className="relative grid grid-cols-17 h-[100lvh] overflow-hidden z-100 pointer-events-none">
-                {colors[getRandomInt(colors.length)].map((color, key) => {
-                    return (
-                        <div
-                            key={key} id={'menu-' + key}
-                            className={"relative gradient transition-transform duration-1000 pointer-events-auto " + (key > 12 || key === 0 ? "cursor-pointer" : "") + (key === 0 ? " z-200" : "")}
-                        >
-                            <div className={"w-full h-[200lvh] translate-y-full text-white text-xl uppercase transition-all duration-2000 ease-in-out"}
-                                 style={{
-                                     background: `linear-gradient(to bottom, ${color[0]}, ${color[1]}, ${color[0]})`
-                                 }}>
+            <div className="w-screen h-[100lvh] relative overflow-hidden">
+                <section className="relative grid grid-cols-17 h-[100lvh] overflow-hidden pointer-events-none">
+                    {colors[getRandomInt(colors.length)].map((color, key) => {
+                        return (
+                            <div
+                                key={key} id={'menu-' + key}
+                                className={"relative gradient transition-transform duration-1000 pointer-events-auto " + (key > 12 || key === 0 ? "cursor-pointer" : "") + (key === 0 ? " z-200" : "") + (key >= 13 ? (" z-" + (key - 9) + "50") : "")}
+                            >
+                                <div className={"w-full h-[200lvh] translate-y-full text-white text-xl uppercase transition-all duration-2000 ease-in-out"}
+                                     style={{
+                                         background: `linear-gradient(to bottom, ${color[0]}, ${color[1]}, ${color[0]})`
+                                     }}>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
 
-            </section>
-            <div className="fixed bottom-12 left-12 galgo z-250 text-[25vw] leading-[0.5] text-white pointer-events-none loading opacity-0 transition-opacity duration-500 uppercase">
-                0%
-            </div>
-            <div className="fixed top-0 left-0 grid grid-cols-17 w-full h-[100lvh] z-1500 text-right pointer-events-none">
-                <div className="menu-item text-white uppercase opacity-0 translate-y-24 transition-all duration-1000 flex flex-row items-start justify-center">
-                    <div className=" text-xl -rotate-90 mt-12">Home</div>
+                </section>
+                <div className="absolute bottom-12 left-12 galgo z-250 text-[25vw] leading-[0.5] text-white pointer-events-none loading opacity-0 transition-opacity duration-500 uppercase">
+                    0%
                 </div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div className="menu-item"></div>
-                <div id="item-13" className="menu-item opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center">
-                    <div className="text-xl -rotate-90 mt-12">Friday</div>
-                </div>
-                <div id="item-14" className="menu-item  opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center">
-                    <div className="text-xl -rotate-90 mt-16">Saturday</div>
-                </div>
-                <div id="item-15" className="menu-item  opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center">
-                    <div className="text-xl -rotate-90 mt-14">Sunday</div>
-                </div>
-                <div id="item-16" className="menu-item  opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center">
-                    <div className="text-xl -rotate-90 whitespace-nowrap mt-24">Tickets & Infos</div>
+                <div className="absolute top-0 left-0 grid grid-cols-17 w-full h-[100lvh] pointer-events-none">
+                    <div className="menu-item text-white relative uppercase opacity-0 translate-y-24 transition-all duration-1000 flex flex-row items-start justify-center z-300">
+                        <div className="text-xl -rotate-90 mt-12">Home</div>
+                    </div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div className="menu-item"></div>
+                    <div id="item-13" className="menu-item opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center z-450">
+                        <div className="relative text-xl -rotate-90 mt-12">Friday</div>
+                        <div className="pointer-events-auto absolute top-0 left-full w-screen h-[100lvh] grid grid-cols-17">
+                            <div className="content col-span-12 bg-white text-black p-5 h-[100lvh] overflow-y-scroll">
+                                <div className="w-full h-[200lvh]">
+                                    <h1 className="text-9xl">Friday</h1>
+                                </div>
+                            </div>
+                            <div className="col-span-5"></div>
+                        </div>
+                    </div>
+                    <div id="item-14" className="menu-item opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center z-550">
+                        <div className="text-xl -rotate-90 mt-16">Saturday</div>
+                        <div className="pointer-events-auto absolute top-0 left-full w-screen h-[100lvh] grid grid-cols-17">
+                            <div className="content col-span-12 bg-white text-black p-5 h-[100lvh] overflow-y-scroll">
+                                <div className="w-full h-[200lvh]">
+                                    <h1 className="text-9xl">Saturday</h1>
+                                </div>
+                            </div>
+                            <div className="col-span-5"></div>
+                        </div>
+                    </div>
+                    <div id="item-15" className="menu-item opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center z-650">
+                        <div className="text-xl -rotate-90 mt-14">Sunday</div>
+                        <div className="pointer-events-auto absolute top-0 left-full w-screen h-[100lvh] grid grid-cols-17">
+                            <div className="content col-span-12 bg-white text-black p-5 h-[100lvh] overflow-y-scroll">
+                                <div className="w-full h-[200lvh]">
+                                    <h1 className="text-9xl">Sunday</h1>
+                                </div>
+                            </div>
+                            <div className="col-span-5"></div>
+                        </div>
+                    </div>
+                    <div id="item-16" className="menu-item opacity-0 translate-y-24 relative transition-all duration-1000 text-white uppercase flex flex-row items-start justify-center z-750">
+                        <div className="text-xl -rotate-90 whitespace-nowrap mt-24">Tickets & Infos</div>
+                        <div className="pointer-events-auto absolute top-0 left-full w-screen h-[100lvh] grid grid-cols-17">
+                            <div className="content col-span-12 bg-white text-black p-5 h-[100lvh] overflow-y-scroll">
+                                <div className="w-full h-[200lvh]">
+                                    <h1 className="text-9xl">Tickets</h1>
+                                </div>
+                            </div>
+                            <div className="col-span-5"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
