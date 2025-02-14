@@ -41,7 +41,8 @@ export default function ColorGrid() {
                             <div className={"w-full h-[200lvh] translate-y-full text-white text-xl uppercase transition-all duration-2000 ease-in-out"}
                                  style={{
                                      background: `linear-gradient(to bottom, ${color[0]}, ${color[1]}, ${color[0]})`
-                                 }}></div>
+                                 }}>
+                            </div>
                         </div>
                     )
                 })}

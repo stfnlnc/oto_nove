@@ -7,6 +7,8 @@ export default function menu(columns, items) {
         toggle[i] = false
     }
 
+    const loading = document.querySelector('.loading')
+
     const resetCol = (items, key, column, k, col) => {
         gsap.to(items[k], {
             x: toggle[key] ? '-' + (column.offsetLeft - (column.offsetWidth * (key - 12))) + 'px' : '0',
@@ -27,6 +29,7 @@ export default function menu(columns, items) {
                 columns.forEach((col, k) => {
                     resetCol(items, key, column, k, col)
                 })
+                toggle.includes(true) ? gsap.to(loading, {opacity: 0, ease: 'power4.inOut'}) : gsap.to(loading, {opacity: 1, ease: 'power4.inOut'})
             })
         }
         if (key > 12) {
@@ -62,7 +65,12 @@ export default function menu(columns, items) {
                         resetCol(items, key, column, k, col)
                     }
                 })
-                console.log(toggle)
+                if (!toggle[key]) {
+                    for (let i = 13; i < key; i++) {
+                        toggle[i] = false
+                    }
+                }
+                toggle.includes(true) ? gsap.to(loading, {opacity: 0, ease: 'power4.inOut'}) : gsap.to(loading, {opacity: 1, ease: 'power4.inOut'})
             })
         }
     })
