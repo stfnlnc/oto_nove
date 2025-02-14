@@ -8,6 +8,8 @@ export default function menu(columns, items) {
     }
 
     const loading = document.querySelector('.loading')
+    const fridayContent = document.getElementById('friday-content')
+    const saturdayContent = document.getElementById('saturday-content')
 
     const resetCol = (items, key, column, k, col) => {
         gsap.to(items[k], {
@@ -29,7 +31,7 @@ export default function menu(columns, items) {
                 columns.forEach((col, k) => {
                     resetCol(items, key, column, k, col)
                 })
-                toggle.includes(true) ? gsap.to(loading, {opacity: 0, ease: 'power4.inOut'}) : gsap.to(loading, {opacity: 1, ease: 'power4.inOut'})
+                toggle.includes(true) ? gsap.to(loading, {opacity: 0, ease: 'power4.inOut'}) : gsap.to(loading, {opacity: 1, delay: 0.4, ease: 'power4.inOut'})
             })
         }
         if (key > 12) {
@@ -70,7 +72,7 @@ export default function menu(columns, items) {
                         toggle[i] = false
                     }
                 }
-                toggle.includes(true) ? gsap.to(loading, {opacity: 0, ease: 'power4.inOut'}) : gsap.to(loading, {opacity: 1, ease: 'power4.inOut'})
+                toggle.includes(true) ? gsap.to(loading, {opacity: 0, ease: 'power4.inOut'}) : gsap.to(loading, {opacity: 1, delay: 0.4, ease: 'power4.inOut'})
             })
         }
     })
