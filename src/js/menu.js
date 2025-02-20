@@ -8,8 +8,6 @@ export default function menu(columns, items) {
     }
 
     const loading = document.querySelector('.loading')
-    const fridayContent = document.getElementById('friday-content')
-    const saturdayContent = document.getElementById('saturday-content')
 
     const resetCol = (items, key, column, k, col) => {
         gsap.to(items[k], {
