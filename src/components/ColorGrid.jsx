@@ -9,6 +9,8 @@ import {useGSAP} from "@gsap/react";
 import Lenis from "lenis";
 import {showLabel} from "../js/showLabel.js";
 import Artist from "./Artist.jsx";
+import {gsap} from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 export default function ColorGrid() {
 
@@ -69,6 +71,29 @@ export default function ColorGrid() {
                 })
             })
         }, 8000)
+
+        gsap.registerPlugin(ScrollTrigger)
+
+        const artists = document.querySelectorAll('.artist')
+
+        artists.forEach(artist => {
+            artist.childNodes.forEach((column) => {
+                gsap.to(column, {
+                    height: 0,
+                    delay: 0.05 * getRandomInt(5),
+                    duration: 2 * (1 + 1 / column.offsetHeight),
+                    ease: 'power4.inOut',
+                    scrollTrigger: {
+                        trigger: artist,
+                        markers: false,
+                        scroller: scrollRef.current,
+                        start: 'top 80%',
+                        end: 'bottom 80%',
+                    }
+                })
+            })
+        })
+
     })
 
     let imgColor = colors[color][0][1]
